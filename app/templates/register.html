@@ -1,0 +1,92 @@
+{% extends "layout_logout.html" %}
+
+{% block content %}
+<div class="row mr-0 content-wrap">
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+    <div class="container col-xl-6 col-sm-10 bg">
+        <div class="form p-2">
+        <div class="login ml-3 mr-3">
+            <div class="content-section">
+                <form method="post" action="">
+                {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="text-center border-bottom mb-4">Rejestracja</legend>
+                        <div class="form-group">
+                            {{ form.login.label(class="form-control-label ml-2") }}
+
+                            {% if form.login.errors %}
+                                {{ form.login(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    <span>"Nazwa musi składać się z 5-15 znaków."</span>
+                                </div>
+                            {% else %}
+                                {{ form.login(class="form-control form-control-lg") }}
+                            {% endif %}
+
+
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label(class="form-control-label ml-2") }}
+                            {{ form.password(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.password_confirmation.label(class="form-control-label ml-2") }}
+
+                            {% if form.password_confirmation.errors %}
+                                {{ form.password_confirmation(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    <span>Pola "Hasło" oraz "Potwierdź hasło" nie są jednakowe.</span>
+                                </div>
+                            {% else %}
+                                {{ form.password_confirmation(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.name.label(class="form-control-label ml-2") }}
+
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    <span>Pola "Hasło" oraz "Potwierdź hasło" nie są jednakowe.</span>
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.surname.label(class="form-control-label ml-2") }}
+
+                            {% if form.surname.errors %}
+                                {{ form.surname(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    <span>Pola "Hasło" oraz "Potwierdź hasło" nie są jednakowe.</span>
+                                </div>
+                            {% else %}
+                                {{ form.surname(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                    </fieldset>
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn") }}
+                    </div>
+                </form>
+            </div>
+            <div class="border-top mt-5">
+                <small class="text-muted">
+                    Masz już konto? <a class="min ml-2" href="{{ url_for('login') }}">Zaloguj</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+
+</div>
+
+
+{% endblock content %}
