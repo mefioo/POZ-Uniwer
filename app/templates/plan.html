@@ -1,0 +1,77 @@
+{% extends "layout_login.html" %}
+
+{% block content %}
+<div class="row mr-0 content-wrap">
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+    <div class="container col-xl-6 col-sm-10 bg">
+        <div class="form p-2" style="height: auto;">
+        <div class="login ml-3 mr-3">
+            <div class="content-section">
+                <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="text-center border-bottom mt-10 mb-10">Logowanie</legend>
+                        <div class="form-group">
+                            {{ form.company.label(class="form-control-label ml-2") }}
+
+                            {% if form.company.errors %}
+                                {{ form.company(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid feedback">
+                                <span>Niepoprawna firma.</span>
+                            </div>
+                            {% else %}
+                                {{ form.company(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.service.label(class="form-control-label ml-2") }}
+
+                            {% if form.service.errors %}
+                                {{ form.service(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid feedback">
+                                <span>Niepoprawny rodzaj usługi.</span>
+                            </div>
+                            {% else %}
+                                {{ form.service(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.date.label(class="form-control-label ml-2") }}
+
+                            {% if form.date.errors %}
+                                {{ form.date(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid feedback">
+                                <span>{{ form.errors }} - niepoprawna data.</span>
+                            </div>
+                            {% else %}
+                                {{ form.date(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.time.label(class="form-control-label ml-2") }}
+
+                            {% if form.time.errors %}
+                                {{ form.time(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid feedback">
+                                <span>Niepoprawny czas. Użyj '.' zamiast ','.</span>
+                            </div>
+                            {% else %}
+                                {{ form.time(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-gruop text-center mt-2 mb-5">
+                        {{ form.submit(class="btn") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+</div>
+{% endblock content %}

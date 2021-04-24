@@ -1,6 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, SelectMultipleField, PasswordField, TextField
+from wtforms import StringField, SubmitField, SelectField, SelectMultipleField, PasswordField, DateTimeField, FloatField, widgets
 from wtforms.validators import DataRequired, Length, EqualTo
+from wtforms.fields.html5 import DateField
+
+
+class MultiCheckboxField(SelectMultipleField):
+    widget = widgets.TableWidget()
+    option_widget = widgets.CheckboxInput()
 
 
 class Login(FlaskForm):
@@ -16,3 +22,11 @@ class Register(FlaskForm):
     name = StringField('Imię', validators=[DataRequired(), Length(max=20)])
     surname = StringField('Nazwisko', validators=[DataRequired(), Length(max=30)])
     submit = SubmitField('Stwórz')
+
+
+class Plan(FlaskForm):
+    company = SelectField('Placówka', choices=[])
+    service = MultiCheckboxField('Rodzaj usługi', choices=[], coerce=int)
+    date = DateField('Data', format='%Y-%m-%d')
+    time = FloatField('Czas', validators=[DataRequired()])
+    submit = SubmitField('Zaplanuj')

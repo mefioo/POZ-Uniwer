@@ -1,0 +1,39 @@
+{% extends "layout_login.html" %}
+
+{% block content %}
+<div class="row mr-0 content-wrap">
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+        <div class="container col-xl-6 col-sm-10 bg">
+            <div class="table-responsive pb-0 mb-5 pt-2 table-container">
+        <div class="text-center mb-3 border-bottom">
+            <h2>Wykaz zaopatrzenia</h2>
+        </div>
+        <table class="display" id="mytable" style="width:100%">
+            <thead>
+                <th scope="col" style="width: 100px;">Firma</th>
+                <th scope="col" style="width: 100px;">Pomieszczenie</th>
+                <th scope="col" style="width: auto;">Sprzęt</th>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>
+                            {% for chunk in row[2] %}
+                                <p>{{ chunk }}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        </div>
+    <div class="col-xl-3 col-sm-1">
+
+    </div>
+</div>
+{% endblock content %}

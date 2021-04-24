@@ -2,9 +2,20 @@
 
 {% block navbar %}
 <li class="active"><a href="#">Strona główna</a></li>
-<li><a href="#contact">Zaplanuj</a></li>
-<li><a href="#contact">Edytuj zlecenia</a></li>
-<li><a href="">Zarządzaj kontami</a> </li>
+<li><a href="{{ url_for('plan') }}">Zaplanuj</a></li>
+<li><a href="{{ url_for('orders_list') }}">Wykaz zleceń</a> </li>
+<li><a href="{{ url_for('supplies_list') }}">Wykaz zaopatrzenia</a> </li>
+{% if perm == 1 %}
+
+{% endif %}
+{% if perm == 2 or perm == 3%}
+    <li><a href="#contact">Edytuj zlecenia</a></li>
+    <li><a href="">Zarządzaj kontami</a> </li>
+{% endif %}
+{% if perm == 3 %}
+
+{% endif %}
+
 <li><a href="{{ url_for('logout') }}">Wyloguj</a> </li>
 {% endblock navbar %}
 
